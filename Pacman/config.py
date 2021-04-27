@@ -3,6 +3,7 @@ from colors import BLACK, LIGHTBLUE, STANDARD_COLOR
 
 # Classes
 from Board import Board
+from Player import Player
 
 pygame.init()
 
@@ -18,3 +19,12 @@ clock = pygame.time.Clock()
 
 # Objects
 board = Board(25, 25, 32, 64, 0, STANDARD_COLOR)
+
+# Sprite list
+sprite_list = pygame.sprite.Group()
+# Player sprite
+player = Player()
+player.rect.x = 13
+player.rect.y = 13
+sprite_list.add(player)
+movement = 10
