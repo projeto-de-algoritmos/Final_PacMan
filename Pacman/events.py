@@ -1,5 +1,6 @@
 from pygame import QUIT, MOUSEBUTTONDOWN, MOUSEBUTTONUP
 from pygame import mouse
+from config import screen, board
 
 def treats_event(event) -> bool:
     """treats pygame events
