@@ -44,11 +44,20 @@ class Board():
                           self.width,
                           self.height])
 
-    def draw_border(self, screen: Surface) -> None:
+    def draw_maze(self, screen: Surface) -> None:
+        """draw rectangles in the borders of the game screen
+                Parameters:
+                        screen (Surface): game screen
+                Returns:
+                        None
+        """
         draw.rect(screen, WALL, (0, 0, 13, 800))
         draw.rect(screen, WALL, (0, 0, 1600, 13))
         draw.rect(screen, WALL, (1587, 0, 13, 800))
         draw.rect(screen, WALL, (0, 787, 1600, 13))
+        for i in range(len(self.colisionX)):
+            draw.rect(screen, WALL, (self.colisionX[i], self.colisionY[i], 13, 13))
+
     def maze_prim(self, x: int, y: int, screen: Surface) -> None:
         """draw maze in the screen based on prim's algorithm
                 Parameters:
@@ -83,13 +92,13 @@ class Board():
 
                 posX = (self.margin + self.width) * (vetY[n]) + self.margin
                 posY = (self.margin + self.height) * (vetX[n]) + self.margin
-                draw.rect(screen, WALL, (posX, posY, 13, 13))
+                #draw.rect(screen, WALL, (posX, posY, 13, 13))
                 self.colisionX.append(posX)
                 self.colisionY.append(posY)
 
                 posX = (self.margin + self.width) * (vetY[n] + vetNY[n]/2) + self.margin
                 posY = (self.margin + self.height) * (vetX[n] + vetNX[n]/2) + self.margin
-                draw.rect(screen, WALL, (posX, posY, 13, 13))
+                #draw.rect(screen, WALL, (posX, posY, 13, 13))
                 self.colisionX.append(posX)
                 self.colisionY.append(posY)
 
