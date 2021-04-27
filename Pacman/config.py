@@ -1,5 +1,8 @@
 import pygame
-from colors import BLACK
+from colors import BLACK, LIGHTBLUE, STANDARD_COLOR
+
+# Classes
+from Board import Board
 
 pygame.init()
 
@@ -12,3 +15,6 @@ pygame.display.set_caption("PacMan")
 
 # Create an object to help track time
 clock = pygame.time.Clock()
+
+# Objects
+board = Board(25, 25, 32, 64, 0, STANDARD_COLOR)
