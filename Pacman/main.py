@@ -3,7 +3,11 @@ import pygame
 # Functions
 from events import treats_event
 # Global constants and variables
-from config import screen, clock
+from config import screen, clock, board
+
+board.draw_grid(screen)
+board.maze_prim(1, 1, screen)
+board.draw_border(screen)
 
 done = False
 while not done:
