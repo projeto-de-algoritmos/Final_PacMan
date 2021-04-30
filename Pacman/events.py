@@ -24,13 +24,7 @@ def treats_event(event) -> bool:
         if event.key == K_DOWN:
             player.control(0,movement)
     elif event.type == KEYUP:
-        if event.key == K_LEFT:
-            player.control(movement,0)
-        if event.key == K_RIGHT:
-            player.control(-movement,0)
-        if event.key == K_UP:
-            player.control(0,movement)
-        if event.key == K_DOWN:
-            player.control(0,-movement)
+        player.movex = 0
+        player.movey = 0
 
     return False
