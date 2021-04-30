@@ -23,8 +23,8 @@ board = Board(25, 25, 32, 64, 0, STANDARD_COLOR)
 # Sprite list
 sprite_list = pygame.sprite.Group()
 # Player sprite
-player = Player()
+player = Player(board)
 player.rect.x = 13
 player.rect.y = 13
 sprite_list.add(player)
-movement = 10
+movement = 2
