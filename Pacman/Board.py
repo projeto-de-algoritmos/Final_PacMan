@@ -45,7 +45,7 @@ class Board():
                           self.height])
 
     def draw_maze(self, screen: Surface) -> None:
-        """draw rectangles in the borders of the game screen
+        """draw the current maze on the screen
                 Parameters:
                         screen (Surface): game screen
                 Returns:
@@ -92,13 +92,11 @@ class Board():
 
                 posX = (self.margin + self.width) * (vetY[n]) + self.margin
                 posY = (self.margin + self.height) * (vetX[n]) + self.margin
-                #draw.rect(screen, WALL, (posX, posY, 13, 13))
                 self.colisionX.append(posX)
                 self.colisionY.append(posY)
 
                 posX = (self.margin + self.width) * (vetY[n] + vetNY[n]/2) + self.margin
                 posY = (self.margin + self.height) * (vetX[n] + vetNX[n]/2) + self.margin
-                #draw.rect(screen, WALL, (posX, posY, 13, 13))
                 self.colisionX.append(posX)
                 self.colisionY.append(posY)
 
