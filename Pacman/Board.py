@@ -1,4 +1,5 @@
 from pygame import draw, Surface
+import pygame
 from colors import BLACK, WALL, STANDARD_COLOR
 from random import randint
 
@@ -12,6 +13,8 @@ class Board():
         self.color = standard_color
         self.colisionX = []
         self.colisionY = []
+        # Maze Squares
+        self.squares = []
         # directions to walk
         self.dx = [ -1, 1, 0,  0]
         self.dy = [  0, 0, 1, -1]
@@ -45,18 +48,34 @@ class Board():
                           self.height])
 
     def draw_maze(self, screen: Surface) -> None:
-        """draw the current maze on the screen
+        """draw the current maze on the square list
                 Parameters:
                         screen (Surface): game screen
                 Returns:
                         None
         """
-        draw.rect(screen, WALL, (0, 0, 13, 800))
-        draw.rect(screen, WALL, (0, 0, 1600, 13))
-        draw.rect(screen, WALL, (1587, 0, 13, 800))
-        draw.rect(screen, WALL, (0, 787, 1600, 13))
+        for i in range(len(self.squares)):
+            draw.rect(screen, WALL, self.squares[i])
+            
+    def store_maze(self, screen: Surface) -> None:
+        """store the current maze on the square list
+                Parameters:
+                        screen (Surface): game screen
+                Returns:
+                        None
+        """
+        temp = pygame.Rect((0, 0, 13, 800))
+        self.squares.append(temp)
+        temp = pygame.Rect((0, 0, 1600, 13))
+        self.squares.append(temp)
+        temp = pygame.Rect((1587, 0, 13, 800))
+        self.squares.append(temp)
+        temp = pygame.Rect((0, 787, 1600, 13))
+        self.squares.append(temp)
+        
         for i in range(len(self.colisionX)):
-            draw.rect(screen, WALL, (self.colisionX[i], self.colisionY[i], 13, 13))
+            temp = pygame.Rect((self.colisionX[i], self.colisionY[i], 13, 13))
+            self.squares.append(temp)
 
     def maze_prim(self, x: int, y: int, screen: Surface) -> None:
         """draw maze in the screen based on prim's algorithm
