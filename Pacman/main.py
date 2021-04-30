@@ -7,9 +7,9 @@ from config import screen, clock, board, sprite_list, player
 # Colors
 from colors import STANDARD_COLOR
 
-
 board.draw_grid(screen)
 board.maze_prim(1, 1, screen)
+board.store_maze(screen)
 
 done = False
 while not done:
