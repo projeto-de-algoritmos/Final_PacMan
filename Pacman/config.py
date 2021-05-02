@@ -27,4 +27,4 @@ player = Player(board)
 player.rect.x = 13
 player.rect.y = 13
 sprite_list.add(player)
-movement = 2
+movement = 1
