@@ -12,21 +12,24 @@ class Player(pygame.sprite.Sprite):
         self.board = board
 
         img = pygame.image.load(os.path.join('images', 'pacman.png')).convert()
-        img = pygame.transform.scale(img, (10, 10))
+        img = pygame.transform.scale(img, (8, 8))
         self.images.append(img)
         self.image = self.images[0]
         self.rect = self.image.get_rect()
 
     def control(self, x, y):
-        collide = False
-        
-        for i in range(len(self.board.squares)):
-            if pygame.Rect.colliderect(self.rect, self.board.squares[i]):
-                collide = True
-        if collide == False:
-            self.movex += x
-            self.movey += y
+        self.movex += x
+        self.movey += y
 
     def update(self):
-        self.rect.x = self.rect.x + self.movex
-        self.rect.y = self.rect.y + self.movey
+        collide = False
+        collision_rect = pygame.Rect(0, 0, 8, 8)
+        collision_rect.x = self.rect.x + self.movex
+        collision_rect.y = self.rect.y + self.movey
+        
+        for i in range(len(self.board.squares)):
+            if pygame.Rect.colliderect(collision_rect, self.board.squares[i]):
+                collide = True
+        if collide == False:
+            self.rect.x = self.rect.x + self.movex
+            self.rect.y = self.rect.y + self.movey
