@@ -17,11 +17,24 @@ class Player(pygame.sprite.Sprite):
         self.image = self.images[0]
         self.rect = self.image.get_rect()
 
-    def control(self, x, y):
+    def control(self, x: int, y: int) -> None:
+        """Updates the player current moving direction
+                Parameters:
+                        x (int): horizontal movement direction
+                        y (int): vertical movement direction
+                Returns:
+                        None
+        """
         self.movex += x
         self.movey += y
 
-    def update(self):
+    def update(self) -> None:
+        """Update the  Player sprite(image) position if there is no collision
+                Parameters:
+                        None
+                Returns:
+                        None
+        """
         collide = False
         collision_rect = pygame.Rect(0, 0, 8, 8)
         collision_rect.x = self.rect.x + self.movex
