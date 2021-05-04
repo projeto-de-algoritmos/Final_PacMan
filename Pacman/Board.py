@@ -64,14 +64,12 @@ class Board():
                 Returns:
                         None
         """
-        temp = pygame.Rect((0, 0, 13, 800))
-        self.squares.append(temp)
-        temp = pygame.Rect((0, 0, 1600, 13))
-        self.squares.append(temp)
-        temp = pygame.Rect((1587, 0, 13, 800))
-        self.squares.append(temp)
-        temp = pygame.Rect((0, 787, 1600, 13))
-        self.squares.append(temp)
+        temp = [(0, 0, 13, 800),
+                (0, 0, 1600, 13),
+                (1587, 0, 13, 800),
+                (0, 787, 1600, 13)]
+        for square in temp:
+                self.squares.append(square)
         
         for i in range(len(self.colisionX)):
             temp = pygame.Rect((self.colisionX[i], self.colisionY[i], 13, 13))
