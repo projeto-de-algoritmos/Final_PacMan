@@ -10,27 +10,26 @@ def treats_event(event) -> bool:
                     True (bool): quit game
                     False (bool): stay playing
     """
+    def player_control(keys) -> None:
+        for key, x, y in keys:
+            if event.key == key:
+                player.control(x, y)
+
     if event.type == QUIT:
         return True
     elif event.type == MOUSEBUTTONDOWN:
         x, y = mouse.get_pos()
     elif event.type == KEYDOWN:
-        if event.key == K_LEFT:
-            player.control(-movement,0)
-        if event.key == K_RIGHT:
-            player.control(movement,0)
-        if event.key == K_UP:
-            player.control(0,-movement)
-        if event.key == K_DOWN:
-            player.control(0,movement)
+        key_down = [(K_LEFT, -movement, 0),
+                    (K_RIGHT, movement, 0),
+                    (K_UP, 0, -movement),
+                    (K_DOWN, 0, movement)]
+        player_control(key_down)
     elif event.type == KEYUP:
-        if event.key == K_LEFT:
-            player.control(movement,0)
-        if event.key == K_RIGHT:
-            player.control(-movement,0)
-        if event.key == K_UP:
-            player.control(0,movement)
-        if event.key == K_DOWN:
-            player.control(0,-movement)
+        key_up = [(K_LEFT, movement, 0),
+                (K_RIGHT, -movement, 0),
+                (K_UP, 0, movement),
+                (K_DOWN, 0, -movement)]
+        player_control(key_up)
 
     return False
