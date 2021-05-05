@@ -3,7 +3,7 @@ import pygame
 # Functions
 from events import treats_event
 # Global constants and variables
-from config import screen, clock, board, sprite_list, player
+from config import screen, clock, board, sprite_list, player, ghost
 # Colors
 from colors import STANDARD_COLOR
 
@@ -17,8 +17,12 @@ while not done:
     clock.tick(60)
     # Fill the screen
     screen.fill(STANDARD_COLOR)
-    # Draw the player
+    # Update player position
     player.update()
+    # Update ghost position
+    ghost.control()
+    ghost.update()
+    # Draw sprites
     sprite_list.draw(screen)
     # Draw the maze
     board.draw_maze(screen)
