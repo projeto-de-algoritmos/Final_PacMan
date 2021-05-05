@@ -35,14 +35,25 @@ class Player(pygame.sprite.Sprite):
                 Returns:
                         None
         """
-        collide = False
         collision_rect = pygame.Rect(0, 0, 8, 8)
+        # X collision check
+        collide = False
         collision_rect.x = self.rect.x + self.movex
-        collision_rect.y = self.rect.y + self.movey
+        collision_rect.y = self.rect.y
         
         for i in range(len(self.board.squares)):
             if pygame.Rect.colliderect(collision_rect, self.board.squares[i]):
                 collide = True
         if collide == False:
             self.rect.x = self.rect.x + self.movex
+
+        # Y collision check
+        collide = False
+        collision_rect.x = self.rect.x
+        collision_rect.y = self.rect.y + self.movey
+        
+        for i in range(len(self.board.squares)):
+            if pygame.Rect.colliderect(collision_rect, self.board.squares[i]):
+                collide = True
+        if collide == False:
             self.rect.y = self.rect.y + self.movey
