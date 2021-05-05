@@ -11,8 +11,8 @@ class Board():
         self.horizontal = horizontal
         self.margin = margin
         self.color = standard_color
-        self.colisionX = []
-        self.colisionY = []
+        self.maze_x = []
+        self.maze_y = []
         # Maze Squares
         self.squares = []
         # directions to walk
@@ -71,8 +71,8 @@ class Board():
         for square in temp:
                 self.squares.append(square)
         
-        for i in range(len(self.colisionX)):
-            temp = pygame.Rect((self.colisionX[i], self.colisionY[i], 13, 13))
+        for i in range(len(self.maze_x)):
+            temp = pygame.Rect((self.maze_x[i], self.maze_y[i], 13, 13))
             self.squares.append(temp)
 
     def maze_prim(self, x: int, y: int, screen: Surface) -> None:
@@ -109,13 +109,13 @@ class Board():
 
                 posX = (self.margin + self.width) * (vetY[n]) + self.margin
                 posY = (self.margin + self.height) * (vetX[n]) + self.margin
-                self.colisionX.append(posX)
-                self.colisionY.append(posY)
+                self.maze_x.append(posX)
+                self.maze_y.append(posY)
 
                 posX = (self.margin + self.width) * (vetY[n] + vetNY[n]/2) + self.margin
                 posY = (self.margin + self.height) * (vetX[n] + vetNX[n]/2) + self.margin
-                self.colisionX.append(posX)
-                self.colisionY.append(posY)
+                self.maze_x.append(posX)
+                self.maze_y.append(posY)
 
                 check[vetX[n]][vetY[n]] = True
                 
