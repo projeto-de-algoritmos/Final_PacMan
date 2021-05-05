@@ -4,6 +4,7 @@ from colors import BLACK, LIGHTBLUE, STANDARD_COLOR
 # Classes
 from Board import Board
 from Player import Player
+from Ghost import Ghost
 
 pygame.init()
 
@@ -27,4 +28,9 @@ player = Player(board)
 player.rect.x = 13
 player.rect.y = 13
 sprite_list.add(player)
-movement = 1
+player_movement = 2
+# Ghost sprite
+ghost = Ghost(board, player)
+ghost.rect.x = 13
+ghost.rect.y = 13
+sprite_list.add(ghost)
