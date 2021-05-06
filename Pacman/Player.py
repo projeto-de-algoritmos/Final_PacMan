@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
         self.board = board
 
         img = pygame.image.load(os.path.join('images', 'pacman.png')).convert()
-        img = pygame.transform.scale(img, (8, 8))
+        img = pygame.transform.scale(img, (16, 16))
         self.images.append(img)
         self.image = self.images[0]
         self.rect = self.image.get_rect()
@@ -35,7 +35,7 @@ class Player(pygame.sprite.Sprite):
                 Returns:
                         None
         """
-        collision_rect = pygame.Rect(0, 0, 8, 8)
+        collision_rect = pygame.Rect(0, 0, 16, 16)
         # X collision check
         collide = False
         collision_rect.x = self.rect.x + self.movex
