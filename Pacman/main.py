@@ -17,13 +17,11 @@ while not done:
     clock.tick(60)
     # Fill the screen
     screen.fill(STANDARD_COLOR)
-    # Update player position
-    player.update()
     # Update ghost position
     ghost.control()
-    ghost.update()
-    # Draw sprites
+    # Draw and update sprites
     sprite_list.draw(screen)
+    sprite_list.update()
     # Draw the maze
     board.draw_maze(screen)
     # Update screen
