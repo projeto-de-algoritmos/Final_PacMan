@@ -63,7 +63,7 @@ class Ghost(pygame.sprite.Sprite):
         return False
 
     def update(self) -> None:
-        """Update the  Player sprite(image) position if there is no collision
+        """Update Ghost position if there is no collision
                 Parameters:
                         None
                 Returns:
