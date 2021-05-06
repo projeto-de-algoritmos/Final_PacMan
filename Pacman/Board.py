@@ -64,15 +64,16 @@ class Board():
                 Returns:
                         None
         """
-        temp = [(0, 0, 13, 800),
-                (0, 0, 1600, 13),
-                (1587, 0, 13, 800),
-                (0, 787, 1600, 13)]
+        size = 25
+        temp = [(0, 0, size, 800),
+                (0, 0, 1600, size),
+                (1600 - size, 0, size, 800),
+                (0, 800 - size, 1600, size)]
         for square in temp:
                 self.squares.append(square)
         
         for i in range(len(self.maze_x)):
-            temp = pygame.Rect((self.maze_x[i], self.maze_y[i], 13, 13))
+            temp = pygame.Rect((self.maze_x[i], self.maze_y[i], size, size))
             self.squares.append(temp)
 
     def maze_prim(self, x: int, y: int, screen: Surface) -> None:
