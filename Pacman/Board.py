@@ -67,10 +67,9 @@ class Board():
         """
         freex = []
         freey = []
-
-        for i in range(self.horizontal):
+        for i in range(64):
             freex.append(i*25)
-        for i in range(self.vertical):
+        for i in range(32):
             freey.append(i*25)
 
         for i in range(len(freex)):
