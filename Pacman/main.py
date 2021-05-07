@@ -3,7 +3,7 @@ import pygame
 # Functions
 from events import treats_event
 # Global constants and variables
-from config import screen, clock, board, sprite_list, player, ghost, grape
+from config import screen, clock, board, sprite_list, player, ghost, grape, fruit_list
 # Colors
 from colors import STANDARD_COLOR
 
@@ -12,7 +12,8 @@ board.maze_prim(1, 1, screen)
 board.store_maze(screen)
 board.free_space()
 
-grape.set_position()
+for i in range (len(fruit_list)):
+    fruit_list[i].set_position()
 
 done = False
 while not done:
