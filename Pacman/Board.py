@@ -15,6 +15,7 @@ class Board():
         self.maze_y = []
         # Maze Squares
         self.squares = []
+        self.free_spaces = []
         # directions to walk
         self.dx = [ -1, 1, 0,  0]
         self.dy = [  0, 0, 1, -1]
@@ -56,7 +57,36 @@ class Board():
         """
         for i in range(len(self.squares)):
             draw.rect(screen, WALL, self.squares[i])
-            
+
+    def free_space(self) -> None:
+        """ Create a list of spaces that the player can move
+                Parameters:
+                        None
+                Returns:
+                        None
+        """
+        freex = []
+        freey = []
+
+        for i in range(self.horizontal):
+            freex.append(i*25)
+        for i in range(self.vertical):
+            freey.append(i*25)
+
+        for i in range(len(freex)):
+            for j in range(len(freey)):
+                temp = pygame.Rect(freex[i], freey[j], 25, 25)
+                self.free_spaces.append(temp)
+
+        i = 0
+        while i < (len(self.free_spaces)):
+            for j in range(len(self.squares)):
+                if pygame.Rect.colliderect(self.free_spaces[i], self.squares[j]):
+                    self.free_spaces.pop(i)
+                    i = i - 1
+                    break
+            i = i + 1
+        
     def store_maze(self, screen: Surface) -> None:
         """store the current maze on the square list
                 Parameters:
