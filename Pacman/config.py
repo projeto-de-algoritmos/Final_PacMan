@@ -5,6 +5,7 @@ from colors import BLACK, LIGHTBLUE, STANDARD_COLOR
 from Board import Board
 from Player import Player
 from Ghost import Ghost
+from Grape import Grape
 
 pygame.init()
 
@@ -20,7 +21,6 @@ clock = pygame.time.Clock()
 
 # Objects
 board = Board(50, 50, 16, 32, 0, STANDARD_COLOR)
-
 # Sprite list
 sprite_list = pygame.sprite.Group()
 # Player sprite
@@ -34,3 +34,6 @@ ghost = Ghost(board, player)
 ghost.rect.x = 26
 ghost.rect.y = 26
 sprite_list.add(ghost)
+# Fruits sprite
+grape = Grape(board, player)
+sprite_list.add(grape)
