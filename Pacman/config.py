@@ -21,8 +21,9 @@ clock = pygame.time.Clock()
 
 # Objects
 board = Board(50, 50, 16, 32, 0, STANDARD_COLOR)
-# Sprite list
+# Sprite list / Fruit list
 sprite_list = pygame.sprite.Group()
+fruit_list = []
 # Player sprite
 player = Player(board)
 player.rect.x = 25
@@ -35,5 +36,8 @@ ghost.rect.x = 26
 ghost.rect.y = 26
 sprite_list.add(ghost)
 # Fruits sprite
-grape = Grape(board, player)
-sprite_list.add(grape)
+for i in range(5):
+    grape = Grape(board, player)
+    fruit_list.append(grape)
+for i in range(len(fruit_list)):
+    sprite_list.add(fruit_list[i])
