@@ -3,13 +3,16 @@ import pygame
 # Functions
 from events import treats_event
 # Global constants and variables
-from config import screen, clock, board, sprite_list, player, ghost
+from config import screen, clock, board, sprite_list, player, ghost, grape
 # Colors
 from colors import STANDARD_COLOR
 
 board.draw_grid(screen)
 board.maze_prim(1, 1, screen)
 board.store_maze(screen)
+board.free_space()
+
+grape.set_position()
 
 done = False
 while not done:
