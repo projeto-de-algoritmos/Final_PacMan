@@ -1,5 +1,6 @@
 # Libraries
 import pygame
+import os
 # Functions
 from events import treats_event
 # Global constants and variables
@@ -51,17 +52,19 @@ def main_menu():
             Returns:
                 int: 0 to close the program
     """
-    button_start = pygame.Rect(600, 300, 400, 200)
+    button_start = pygame.Rect(450, 400, 700, 200)
     done = False
     x = 0
     y = 0
+
+    menuimg = pygame.image.load(os.path.join('images', 'menu.png')).convert()
+    menurect = menuimg.get_rect()
     while not done:
         # Frame rate
         clock.tick(60)
         # Fill the screen
         screen.fill(WALL)
-        # Buttons
-        pygame.draw.rect(screen, BLACK, button_start)
+        screen.blit(menuimg, menurect)
         # Update screen
         pygame.display.flip()
         # Events
