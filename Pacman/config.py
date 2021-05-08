@@ -4,6 +4,8 @@ from colors import BLACK, LIGHTBLUE, STANDARD_COLOR
 # Classes
 from Board import Board
 from Player import Player
+from Ghost import Ghost
+from Grape import Grape
 
 pygame.init()
 
@@ -18,13 +20,24 @@ pygame.display.set_caption("PacMan")
 clock = pygame.time.Clock()
 
 # Objects
-board = Board(25, 25, 32, 64, 0, STANDARD_COLOR)
-
-# Sprite list
+board = Board(50, 50, 16, 32, 0, STANDARD_COLOR)
+# Sprite list / Fruit list
 sprite_list = pygame.sprite.Group()
+fruit_list = []
 # Player sprite
 player = Player(board)
-player.rect.x = 13
-player.rect.y = 13
+player.rect.x = 25
+player.rect.y = 25
 sprite_list.add(player)
-movement = 1
+player_movement = 2
+# Ghost sprite
+ghost = Ghost(board, player)
+ghost.rect.x = 26
+ghost.rect.y = 26
+sprite_list.add(ghost)
+# Fruits sprite
+for i in range(5):
+    grape = Grape(board, player)
+    fruit_list.append(grape)
+for i in range(len(fruit_list)):
+    sprite_list.add(fruit_list[i])

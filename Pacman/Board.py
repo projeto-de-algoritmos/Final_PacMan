@@ -11,10 +11,11 @@ class Board():
         self.horizontal = horizontal
         self.margin = margin
         self.color = standard_color
-        self.colisionX = []
-        self.colisionY = []
+        self.maze_x = []
+        self.maze_y = []
         # Maze Squares
         self.squares = []
+        self.free_spaces = []
         # directions to walk
         self.dx = [ -1, 1, 0,  0]
         self.dy = [  0, 0, 1, -1]
@@ -56,7 +57,35 @@ class Board():
         """
         for i in range(len(self.squares)):
             draw.rect(screen, WALL, self.squares[i])
-            
+
+    def free_space(self) -> None:
+        """ Create a list of spaces that the player can move
+                Parameters:
+                        None
+                Returns:
+                        None
+        """
+        freex = []
+        freey = []
+        for i in range(64):
+            freex.append(i*25)
+        for i in range(32):
+            freey.append(i*25)
+
+        for i in range(len(freex)):
+            for j in range(len(freey)):
+                temp = pygame.Rect(freex[i], freey[j], 25, 25)
+                self.free_spaces.append(temp)
+
+        i = 0
+        while i < (len(self.free_spaces)):
+            for j in range(len(self.squares)):
+                if pygame.Rect.colliderect(self.free_spaces[i], self.squares[j]):
+                    self.free_spaces.pop(i)
+                    i = i - 1
+                    break
+            i = i + 1
+        
     def store_maze(self, screen: Surface) -> None:
         """store the current maze on the square list
                 Parameters:
@@ -64,15 +93,16 @@ class Board():
                 Returns:
                         None
         """
-        temp = [(0, 0, 13, 800),
-                (0, 0, 1600, 13),
-                (1587, 0, 13, 800),
-                (0, 787, 1600, 13)]
+        size = 25
+        temp = [(0, 0, size, 800),
+                (0, 0, 1600, size),
+                (1600 - size, 0, size, 800),
+                (0, 800 - size, 1600, size)]
         for square in temp:
                 self.squares.append(square)
         
-        for i in range(len(self.colisionX)):
-            temp = pygame.Rect((self.colisionX[i], self.colisionY[i], 13, 13))
+        for i in range(len(self.maze_x)):
+            temp = pygame.Rect((self.maze_x[i], self.maze_y[i], size, size))
             self.squares.append(temp)
 
     def maze_prim(self, x: int, y: int, screen: Surface) -> None:
@@ -109,13 +139,13 @@ class Board():
 
                 posX = (self.margin + self.width) * (vetY[n]) + self.margin
                 posY = (self.margin + self.height) * (vetX[n]) + self.margin
-                self.colisionX.append(posX)
-                self.colisionY.append(posY)
+                self.maze_x.append(posX)
+                self.maze_y.append(posY)
 
                 posX = (self.margin + self.width) * (vetY[n] + vetNY[n]/2) + self.margin
                 posY = (self.margin + self.height) * (vetX[n] + vetNX[n]/2) + self.margin
-                self.colisionX.append(posX)
-                self.colisionY.append(posY)
+                self.maze_x.append(posX)
+                self.maze_y.append(posY)
 
                 check[vetX[n]][vetY[n]] = True
                 
