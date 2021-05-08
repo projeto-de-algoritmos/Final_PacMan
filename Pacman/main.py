@@ -3,7 +3,9 @@ import pygame
 # Functions
 from events import treats_event
 # Global constants and variables
-from config import screen, clock, board, sprite_list, player, ghost, grape, fruit_list
+from config import screen, clock, board, \
+                   sprite_list, player, ghost, \
+                   grape, fruit_list
 # Colors
 from colors import STANDARD_COLOR
 

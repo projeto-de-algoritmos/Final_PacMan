@@ -29,15 +29,15 @@ player = Player(board)
 player.rect.x = 25
 player.rect.y = 25
 sprite_list.add(player)
-player_movement = 2
+player_movement = 3
 # Ghost sprite
-ghost = Ghost(board, player)
-ghost.rect.x = 26
-ghost.rect.y = 26
-sprite_list.add(ghost)
+for i in range(5):
+    ghost = Ghost(board, player)
+    ghost.rect.x = 26
+    ghost.rect.y = 26
+    sprite_list.add(ghost)
 # Fruits sprite
 for i in range(5):
     grape = Grape(board, player)
     fruit_list.append(grape)
-for i in range(len(fruit_list)):
-    sprite_list.add(fruit_list[i])
+    sprite_list.add(grape)

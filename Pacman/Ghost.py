@@ -9,14 +9,10 @@ class Ghost(pygame.sprite.Sprite):
         self.movex = 0
         self.movey = 0
         self.frame = 60
-        self.images = []
         self.board = board
         self.player = player
-
-        img = pygame.image.load(os.path.join('images', 'redghost.png')).convert()
-        img = pygame.transform.scale(img, (8, 8))
-        self.images.append(img)
-        self.image = self.images[0]
+        img = pygame.image.load(os.path.join('images', 'redghost.png'))
+        self.image = pygame.transform.scale(img.convert(), (8, 8))
         self.rect = self.image.get_rect()
 
     def control(self) -> None:
@@ -38,24 +34,29 @@ class Ghost(pygame.sprite.Sprite):
 
         x = self.rect.x
         y = self.rect.y
-        if temp_x > 0 and self.path_check(x + 1, y) == False:
+        if temp_x > 0 and not self.path_check(x + 1, y):
             self.movex = 1
-        elif temp_x < 0 and self.path_check(x - 1, y) == False:
+        elif temp_x < 0 and not self.path_check(x - 1, y):
             self.movex = -1
         else :
             self.movex = 0
 
-        if temp_y > 0 and self.path_check(x, y + 1) == False:
+        if temp_y > 0 and not self.path_check(x, y + 1):
             self.movey = 1
-        elif temp_y < 0 and self.path_check(x, y - 1) == False:
+        elif temp_y < 0 and not self.path_check(x, y - 1):
             self.movey = -1
         else :
             self.movey = 0
 
     def path_check(self, x:int, y:int) -> bool:
-
+        """Check ghost colision with player
+                Parameters:
+                        x (int): ghost x position
+                        y (int): ghost y position
+                Returns:
+                        None
+        """
         collision_rect = pygame.Rect(x, y, 8, 8)
-
         for i in range(len(self.player.board.squares)):
             if pygame.Rect.colliderect(collision_rect, self.player.board.squares[i]):
                 return True
