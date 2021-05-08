@@ -23,29 +23,23 @@ class Ghost(pygame.sprite.Sprite):
                 Returns:
                         None
         """
-        if self.rect.x > self.player.rect.x:
-            temp_x = -1
-        else :
-            temp_x = 1
-        if self.rect.y > self.player.rect.y:
-            temp_y = -1
-        else :
-            temp_y = 1
-
         x = self.rect.x
         y = self.rect.y
+        temp_x = -1 if x > self.player.rect.x else 1
+        temp_y = -1 if y > self.player.rect.y else 1
+
         if temp_x > 0 and not self.path_check(x + 1, y):
             self.movex = 1
         elif temp_x < 0 and not self.path_check(x - 1, y):
             self.movex = -1
-        else :
+        else:
             self.movex = 0
 
         if temp_y > 0 and not self.path_check(x, y + 1):
             self.movey = 1
         elif temp_y < 0 and not self.path_check(x, y - 1):
             self.movey = -1
-        else :
+        else:
             self.movey = 0
 
     def path_check(self, x:int, y:int) -> bool:
