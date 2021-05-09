@@ -37,7 +37,7 @@ for i in range(80):
     sprite_list.add(grape)
 
 # Goal
-for i in range(3):
+for i in range(10):
     goal = Goal(board, player)
     fruit_list.append(goal)
     sprite_list.add(goal)
