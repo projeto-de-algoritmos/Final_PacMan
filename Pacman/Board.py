@@ -13,6 +13,7 @@ class Board():
         self.color = standard_color
         self.maze_x = []
         self.maze_y = []
+        self.squares_size = 25
         # Maze Squares
         self.squares = []
         self.free_spaces = []
@@ -67,18 +68,21 @@ class Board():
         """
         freex = []
         freey = []
-        for i in range(64):
-            freex.append(i*25)
-        for i in range(32):
-            freey.append(i*25)
+        horizontal_size = 64
+        vertical_size = 32
+        for i in range(horizontal_size):
+            freex.append(i*self.squares_size)
+        for i in range(vertical_size):
+            freey.append(i*self.squares_size)
 
         for i in range(len(freex)):
             for j in range(len(freey)):
-                temp = pygame.Rect(freex[i], freey[j], 25, 25)
+                temp = pygame.Rect(freex[i], freey[j],
+                                   self.squares_size, self.squares_size)
                 self.free_spaces.append(temp)
 
         i = 0
-        while i < (len(self.free_spaces)):
+        while i < len(self.free_spaces):
             for j in range(len(self.squares)):
                 if pygame.Rect.colliderect(self.free_spaces[i], self.squares[j]):
                     self.free_spaces.pop(i)
@@ -93,17 +97,16 @@ class Board():
                 Returns:
                         None
         """
-        size = 25
-        temp = [(0, 0, size, 800),
-                (0, 0, 1600, size),
-                (1600 - size, 0, size, 800),
-                (0, 800 - size, 1600, size)]
-        for square in temp:
+        edges = [(0, 0, self.squares_size, 800),
+                (0, 0, 1600, self.squares_size),
+                (1600 - self.squares_size, 0, self.squares_size, 800),
+                (0, 800 - self.squares_size, 1600, self.squares_size)]
+        for square in edges:
                 self.squares.append(square)
         
         for i in range(len(self.maze_x)):
-            temp = pygame.Rect((self.maze_x[i], self.maze_y[i], size, size))
-            self.squares.append(temp)
+            edges = pygame.Rect((self.maze_x[i], self.maze_y[i], self.squares_size, self.squares_size))
+            self.squares.append(edges)
 
     def maze_prim(self, x: int, y: int, screen: Surface) -> None:
         """draw maze in the screen based on prim's algorithm

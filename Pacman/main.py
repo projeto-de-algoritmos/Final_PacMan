@@ -4,7 +4,9 @@ import os
 # Functions
 from events import treats_event
 # Global constants and variables
-from config import screen, clock, board, sprite_list, player, ghost, grape, fruit_list
+from config import screen, clock, board, \
+                   sprite_list, player, \
+                   grape, fruit_list
 # Colors
 from colors import STANDARD_COLOR, WALL, BLACK
 
@@ -31,8 +33,6 @@ def main_game() -> int:
         clock.tick(60)
         # Fill the screen
         screen.fill(STANDARD_COLOR)
-        # Update ghost position
-        ghost.control()
         # Draw and update sprites
         sprite_list.draw(screen)
         sprite_list.update()
