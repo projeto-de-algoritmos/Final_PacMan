@@ -7,14 +7,11 @@ from random import randint
 class Grape(pygame.sprite.Sprite):
     def __init__(self, board: Board, player: Player):
         pygame.sprite.Sprite.__init__(self)
-        self.images = []
         self.board = board
         self.player = player
         self.catch = False
         img = pygame.image.load(os.path.join('images', 'grape.jpg')).convert()
-        img = pygame.transform.scale(img, (25, 25))
-        self.images.append(img)
-        self.image = self.images[0]
+        self.image = pygame.transform.scale(img, (25, 25))
         self.rect = self.image.get_rect()
 
     def set_position(self) -> None:
@@ -35,7 +32,9 @@ class Grape(pygame.sprite.Sprite):
                 Returns:
                         None
         """
-        if self.catch == False and pygame.Rect.colliderect(self.rect, self.player.rect):
-            self.rect.x = -1
-            self.rect.y = -1
-            self.catch = True
+        if self.player.fruits != 3:
+            if self.catch == False and pygame.Rect.colliderect(self.rect, self.player.rect):
+                self.rect.x = -1
+                self.rect.y = -1
+                self.catch = True
+                self.player.fruits += 1

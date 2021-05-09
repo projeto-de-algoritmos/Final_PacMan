@@ -10,12 +10,17 @@ class Player(pygame.sprite.Sprite):
         self.frame = 60
         self.images = []
         self.board = board
+        self.fruits = 0
 
         img = pygame.image.load(os.path.join('images', 'pacman.png')).convert()
         img = pygame.transform.scale(img, (16, 16))
         self.images.append(img)
         self.image = self.images[0]
         self.rect = self.image.get_rect()
+
+    def free(self):
+        self.fruits = 0
+        return
 
     def control(self, x: int, y: int) -> None:
         """Updates the player current moving direction
