@@ -11,7 +11,7 @@ class Grape(pygame.sprite.Sprite):
         self.board = board
         self.player = player
         self.catch = False
-        img = pygame.image.load(os.path.join('images', 'grape.jpeg')).convert()
+        img = pygame.image.load(os.path.join('images', 'grape.jpg')).convert()
         img = pygame.transform.scale(img, (25, 25))
         self.images.append(img)
         self.image = self.images[0]
