@@ -4,7 +4,6 @@ from colors import BLACK, LIGHTBLUE, STANDARD_COLOR
 # Classes
 from Board import Board
 from Player import Player
-from Ghost import Ghost
 from Grape import Grape
 
 pygame.init()
@@ -29,15 +28,9 @@ player.rect.x = 25
 player.rect.y = 25
 sprite_list.add(player)
 player_movement = 3
-# Ghost sprite
-for i in range(5):
-    ghost = Ghost(board, player)
-    ghost.rect.x = 26
-    ghost.rect.y = 26
-    sprite_list.add(ghost)
 # Fruits sprite
 fruit_list = []
-for i in range(5):
+for i in range(80):
     grape = Grape(board, player)
     fruit_list.append(grape)
     sprite_list.add(grape)
