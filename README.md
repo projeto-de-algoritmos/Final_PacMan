@@ -10,22 +10,28 @@
 | 18/0030264  |  Antonio Igor Carvalho |
 
 ## Sobre 
-O objetivo do projeto é recriar o clássico jogo PacMan.
+O objetivo do projeto é criar um jogo inspirado no PacMan utilizando os conceitos da
+disciplina
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![1](https://user-images.githubusercontent.com/78360676/117893024-0c84da00-b290-11eb-9deb-2c91ec21f507.jpg)
+![2](https://user-images.githubusercontent.com/78360676/117893030-0db60700-b290-11eb-8d2e-6f8d0b8bad9d.jpg)
+![3](https://user-images.githubusercontent.com/78360676/117893037-0f7fca80-b290-11eb-893b-8502f8d7ed2f.jpg)
+![4](https://user-images.githubusercontent.com/78360676/117893044-10b0f780-b290-11eb-96e6-46033083368a.jpg)
+
 
 ## Instalação 
 **Linguagem**: python3
-**Framework**: python3-pygame
-**SO utilizado no desenvolvimento**: Debian GNU/Linux
+<br />**Framework**: python3-pygame
+<br />**SO utilizado no desenvolvimento**: Debian GNU/Linux
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+O único pré requisito é ter o interpretador python3 instalado e a biblioteca pygame.
 
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
-
+```
+$ git clone https://github.com/projeto-de-algoritmos/Final_PacMan.git
+```
+E dentro da pasta PacMan executar o seguinte comando:
+```
+$ python3 main.py
+```
